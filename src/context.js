@@ -12,17 +12,41 @@
 
 // export const RoomConsumer=RoomContext.Consumer;
 
-import React from "react";
+import React, {useContext, useState, useEffect} from "react";
 import items from "./data";
 
 const RoomContext = React.createContext();
 
+//const useRoomContext = useContext(RoomContext);
 
 export default function RoomProvider({children}){
-  
+      const initialState={
+       rooms:[],
+       sortedRooms:[],
+       featureRooms: [],
+       loading: true
+      };
+
+      //get data
+      useEffect(() => {
+        let rooms=formatData(items);
+        console.log(rooms);
+      });
+
+      const formatData=(items)=> {
+        let tempItems=items.map(item=>{
+          let id=item.sys.id;
+          let images=item.fields.images.map(image=>image.fields.file.url);
+          let room={...item.fields, images: images, id};
+          return room;
+        });
+        return tempItems;
+      };
+
+      const [state, setState] = useState(initialState);
       return (
         <RoomContext.Provider
-          value="Hello"
+        value={[state, setState]}
         >
           {children}
         </RoomContext.Provider>

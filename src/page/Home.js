@@ -3,7 +3,7 @@ import Template from "../components/Template";
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import Services from '../components/Services';
-
+import FeatureRooms from '../components/FeatureRooms';
 
 export const Home = () => {
     return (
@@ -14,6 +14,7 @@ export const Home = () => {
         </Banner>
     </Template>
     <Services /> 
+    <FeatureRooms />
     </>
     );
 }
