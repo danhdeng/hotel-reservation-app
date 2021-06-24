@@ -31,7 +31,7 @@ const intialServices= [
 
 export default function Services({title}) {
 
-    const [services, setService] = useState(intialServices);
+    const [services,] = useState(intialServices);
     return (
        <section className="services">
            <Title title="services" />

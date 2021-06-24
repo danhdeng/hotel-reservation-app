@@ -12,7 +12,7 @@
 
 // export const RoomConsumer=RoomContext.Consumer;
 
-import React, {useContext, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import items from "./data";
 
 const RoomContext = React.createContext();
@@ -20,18 +20,33 @@ const RoomContext = React.createContext();
 //const useRoomContext = useContext(RoomContext);
 
 export default function RoomProvider({children}){
-      const initialState={
-       rooms:[],
-       sortedRooms:[],
-       featureRooms: [],
-       loading: true
-      };
+  const [state, setState] = useState({
+    rooms: [],
+    sortedRooms: [],
+    featuredRooms: [],
+    loading: true,
+    type: "all",
+    capacity: 1,
+    price: 0,
+    minPrice: 0,
+    maxPrice: 0,
+    minSize: 0,
+    maxSize: 0,
+    breakfast: false,
+    pets: false,
+  });
 
       //get data
       useEffect(() => {
         let rooms=formatData(items);
-        console.log(rooms);
-      });
+        setState((prevState) => {
+          return {
+            ...prevState,
+            loading: false,
+            featuredRooms:rooms
+          };
+        });
+      }, []);
 
       const formatData=(items)=> {
         let tempItems=items.map(item=>{
@@ -43,10 +58,20 @@ export default function RoomProvider({children}){
         return tempItems;
       };
 
-      const [state, setState] = useState(initialState);
+      const getRoom=(roomType)=>{
+        console.log(roomType);
+        let tempRooms=[...state.featuredRooms];
+        console.log(tempRooms);
+        const room=tempRooms.find(item=>item.roomtype===roomType);
+        return room;
+      }
+
       return (
         <RoomContext.Provider
-        value={[state, setState]}
+        value={{
+          ...state,
+          getRoom
+        }}
         >
           {children}
         </RoomContext.Provider>
