@@ -6,13 +6,19 @@ import Title from "./Title";
 
 export default function FeatureRooms() {
     const {loading, featuredRooms}=useContext(RoomContext);
-    console.log(featuredRooms);
+    
+    const rooms = featuredRooms.map(room => {
+        return <Room key={room.id} room={room} />;
+      });
+
     return (
         <section className="feature-rooms">
             <Title title="feature rooms" />
             <div className="featured-rooms-center">
-                { loading ? <Loading /> :
-                    featuredRooms.map(room=><Room key={Room.id} room={room} />)
+                { loading ? <Loading /> : 
+                    featuredRooms.map(room => {
+                        return <Room key={room.id} room={room} />;
+                      })
                 }
             </div>
         </section>

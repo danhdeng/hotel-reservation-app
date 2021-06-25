@@ -59,9 +59,7 @@ export default function RoomProvider({children}){
       };
 
       const getRoom=(roomType)=>{
-        console.log(roomType);
         let tempRooms=[...state.featuredRooms];
-        console.log(tempRooms);
         const room=tempRooms.find(item=>item.roomtype===roomType);
         return room;
       }

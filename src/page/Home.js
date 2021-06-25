@@ -4,7 +4,7 @@ import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import Services from '../components/Services';
 import FeatureRooms from '../components/FeatureRooms';
-
+import styleTemplate from '../components/Template.Styles';
 export const Home = () => {
     return (
     <>
