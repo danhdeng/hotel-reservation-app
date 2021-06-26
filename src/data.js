@@ -729,7 +729,7 @@ export default [
         {
           fields: {
             file: {
-              // url: room1
+               url: room1
             }
           }
         },

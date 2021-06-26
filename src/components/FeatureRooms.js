@@ -4,12 +4,9 @@ import Loading from './Loading';
 import Room from './Room';
 import Title from "./Title";
 
+
 export default function FeatureRooms() {
     const {loading, featuredRooms}=useContext(RoomContext);
-    
-    const rooms = featuredRooms.map(room => {
-        return <Room key={room.id} room={room} />;
-      });
 
     return (
         <section className="feature-rooms">

@@ -3,7 +3,7 @@ import React from 'react';
 import Template from '../components/Template';
 import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
-import styleTemplate from '../components/Template.Styles';
+import RoomsContainer from "../components/RoomsContainer";
 export const Rooms = () => {
     return(
     <>
@@ -12,6 +12,7 @@ export const Rooms = () => {
             <Link to="/" className="btn-primary">return home</Link>
         </Banner> 
     </Template>
+    <RoomsContainer />
     </>
 )
 }
